@@ -1,9 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
+import Task from "./Task.js"
 
-function TaskList() {
+function TaskList({ allTasks }) {
+
+  // console.log(allTasks)
+  const taskComponents = allTasks.map(task => {
+    return <Task key={task.text} text={task.text} category={task.category} onDeleteClick={handleDelete} />
+  })
+
+  // .filter(task => {return task.category === "Food"})
+
+  function handleDelete() {
+    console.log(allTasks)
+  }
+
   return (
     <div className="tasks">
-      {/* display a list of tasks using Task component */}
+      {taskComponents}
     </div>
   );
 }
